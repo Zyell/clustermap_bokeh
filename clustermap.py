@@ -61,9 +61,10 @@ def clustermap(df: pd.DataFrame, title: Optional[str] = '',
                                width=heatmap_size[0], height=dendogram_width,
                                location=col_dendogram_location)
     cols = list(df.columns)
+    rows = list(df.index)
     h_p = build_heatmap_plot(df,
-                             [cols[c] for c in cols_dendogram['leaves']],
-                             list(reversed(rows_dendogram['ivl'])),
+                             [str(cols[c]) for c in cols_dendogram['leaves']],
+                             [str(rows[r]) for r in rows_dendogram['leaves'][::-1]],
                              cmap=cmap, colorbar_location=colorbar_location,
                              x_axis_location=heatmap_x_axis_location,
                              y_axis_location=heatmap_y_axis_location,
